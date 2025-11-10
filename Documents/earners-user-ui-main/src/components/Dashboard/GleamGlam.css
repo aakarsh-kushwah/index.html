@@ -1,0 +1,65 @@
+/* Gleam & Glam Section-specific styles with unique prefixes */
+
+/* Main Container */
+.gg-kit-details {
+    margin: 24px 0;
+    text-align: center;
+    padding: 21px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading Row */
+.gg-kit-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo next to heading */
+.gg-kit-section-logo-left {
+    width: 50px;
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 10%;
+    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Card */
+.gg-product-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gg-product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.gg-product-card .card-img-top {
+    height: 370px;
+    object-fit: cover;
+    border-bottom: 3px solid #6c5ce7;
+}
+
+/* Left-aligned price */
+.gg-text-left-price {
+    text-align: left !important;
+    margin-top: 10px;
+}
+
+/* Read More/Less toggle button */
+.gg-read-more-toggle {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+}

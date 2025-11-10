@@ -1,0 +1,123 @@
+.maintenance-body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #ff7eb3, #ff758c);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.maintenance-logo {
+    display: block;
+    max-width: 150px; /* Adjust size as needed */
+    margin-bottom: 20px; /* Space between logo and container */
+    animation: fade-in 1.5s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.maintenance-container {
+    max-width: 600px;
+    width: 90%; /* Adjust for smaller screens */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.maintenance-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.maintenance-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.maintenance-animation {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border: 5px solid #ffffff;
+    border-top: 5px solid #ff758c;
+    border-radius: 50%;
+    animation: maintenance-spin 1.5s linear infinite;
+}
+
+@keyframes maintenance-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.maintenance-footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+
+/* Small Devices (up to 768px) */
+@media (max-width: 768px) {
+    .maintenance-logo {
+        max-width: 120px; /* Adjust logo size for smaller screens */
+    }
+
+    .maintenance-title {
+        font-size: 2rem;
+    }
+
+    .maintenance-text {
+        font-size: 1rem;
+    }
+
+    .maintenance-animation {
+        width: 80px;
+        height: 80px;
+        border-width: 4px;
+    }
+}
+
+/* Extra Small Devices (up to 480px) */
+@media (max-width: 480px) {
+    .maintenance-logo {
+        max-width: 100px; /* Further adjust logo size */
+    }
+
+    .maintenance-title {
+        font-size: 1.8rem;
+    }
+
+    .maintenance-text {
+        font-size: 0.9rem;
+    }
+
+    .maintenance-animation {
+        width: 60px;
+        height: 60px;
+        border-width: 3px;
+    }
+
+    .maintenance-footer {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #28a745;
+    --text-color: #343a40;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --highlight-bg: #e7f3ff;
+    --timeline-color: #007bff;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.business-plan-container .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.language-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+.language-toggle-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.tagline {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+section {
+    margin-bottom: 50px;
+}
+section h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.highlight-box {
+    background-color: var(--highlight-bg);
+    border-left: 5px solid var(--primary-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+}
+.highlight-box p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+/* --- VISUAL TIMELINE --- */
+.timeline {
+    position: relative;
+    margin-top: 40px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    height: 100%;
+    width: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 60px; /* Space for icon and line */
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--timeline-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 2;
+    border: 3px solid white;
+}
+
+.timeline-content {
+    background: var(--light-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+.timeline-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.timeline-content p {
+    margin-bottom: 5px;
+}
+.total-income {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 15px;
+}
+.note {
+    font-style: italic;
+    color: #6c757d;
+    margin-top: 15px;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--light-bg);
+    border-radius: 10px;
+}
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+@media (max-width: 768px) {
+    .header h1 { font-size: 2.2rem; }
+    section h2 { font-size: 1.6rem; }
+    .timeline::before { left: 15px; }
+    .timeline-item { padding-left: 50px; }
+    .timeline-icon { width: 34px; height: 34px; font-size: 1.2rem; left: 0; }
+}

@@ -1,0 +1,26 @@
+.razorpay-button-custom {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(255, 126, 95, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.razorpay-button-custom:hover {
+  background: linear-gradient(90deg, #feb47b, #ff7e5f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 126, 95, 0.6);
+}
+
+.razorpay-button-custom:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(255, 126, 95, 0.4);
+}

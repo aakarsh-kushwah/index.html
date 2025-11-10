@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  
+  .banner-button {
+    margin-top: 20px;
+    background-color: #fdcb6e;
+    color: #2d3436;
+    font-weight: 600;
+    border: none;
+  }
+  
+  .banner-button:hover {
+    background-color: #e17055;
+    color: white;
+  }
+  
+  /* Testimonials Section */
+  .testimonials-container {
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .testimonials-container h2 {
+    color: #2d3436;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .testimonial-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+  }
+  
+  .testimonial-card h5 {
+    color: #636e72;
+    margin-top: 15px;
+  }
+  
+  /* Achievements Section */
+  .achievements-container {
+    background-color: #dfe6e9;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .achievements-container h2 {
+    color: #2d3436;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .achievement-col {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .achievement-icon {
+    font-size: 50px;
+    color: #fdcb6e;
+    margin-bottom: 10px;
+  }
+  
+  /* Button for Watch Video */
+  .watch-video-button {
+    margin-top: 15px;
+    background-color: #e17055;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .watch-video-button:hover {
+    background-color: #fdcb6e;
+    color: #2d3436;
+  }
+  
+  /* Video Section */
+  .video-container {
+    background-color: #f0f1f2;
+    padding: 40px 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-container h3 {
+    color: #2d3436;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .team-video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive CSS */
+  @media (max-width: 768px) {
+    .team-video {
+      max-width: 100%;
+    }
+  
+    .achievements-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .achievement-col {
+      margin-bottom: 20px;
+    }
+  
+    .watch-video-button {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .achievements-container {
+      padding: 30px 15px;
+    }
+  
+    .achievement-icon {
+      font-size: 40px;
+    }
+  
+    .video-container h3 {
+      font-size: 1.2rem;
+    }
+  
+    .banner-button {
+      padding: 10px 20px;
+    }
+  }

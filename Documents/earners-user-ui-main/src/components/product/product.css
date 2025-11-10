@@ -1,0 +1,235 @@
+/* Import Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+/* Main Container */
+.unique-product-container {
+  background: linear-gradient(135deg, #ffffff, #f0f4f7);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  margin: auto;
+}
+
+.unique-product-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+/* Card Styling */
+.unique-product-card {
+  border: none;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.unique-product-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Product Image */
+.unique-product-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+}
+
+.unique-product-image {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.unique-product-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Content */
+.unique-product-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.unique-product-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.unique-product-price {
+  font-size: 26px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 10px;
+}
+
+.unique-product-original-price {
+  font-size: 18px;
+  color: #95a5a6;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+/* Buy Button */
+.unique-buy-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.unique-buy-button:hover {
+  background-color: #2ecc71;
+  transform: translateY(-3px);
+}
+
+/* Product Details Heading */
+.unique-product-details-heading {
+  margin: 20px 0;
+  font-size: 22px;
+  color: #2c3e50;
+}
+
+/* Description Toggle */
+.unique-product-description-toggle {
+  cursor: pointer;
+  color: #007bff;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.unique-product-description-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.unique-product-click-here {
+  color: #3498db;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Attractive Styling for Expanded Description Section */
+.unique-product-description-content {
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+  border-left: 6px solid #ff8c00;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styling for Each Product Section within the Description */
+.product-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #ddd;
+}
+
+.product-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Product Section Headings */
+.product-section h4 {
+  color: #ff8c00;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Key Features Label */
+.product-section strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Paragraphs for Product Details */
+.product-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 10px 0;
+}
+
+/* Styling for the Kit Contents Carousel */
+.unique-product-carousel {
+  margin-top: 30px;
+}
+
+/* Carousel Image Enhancements */
+.unique-product-carousel .carousel-item img {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Kit Products Heading */
+.kitproducts {
+  font-size: 1.8rem;
+  color: #b8860b;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(to right, #fff8dc, #f0e68c);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  border: 2px solid #b8860b;
+  display: inline-block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.kitproducts:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #f0e68c, #fff8dc);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .unique-product-body {
+    flex-direction: column;
+  }
+
+  .unique-product-image-wrapper {
+    max-width: 100%;
+  }
+
+  .unique-product-content {
+    padding: 0;
+  }
+}

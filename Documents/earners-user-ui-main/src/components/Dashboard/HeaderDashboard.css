@@ -1,0 +1,120 @@
+/* Header Styles */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+    position: fixed; /* Keep header in place during scroll */
+    top: 0; /* Align to the top of the viewport */
+    width: 100%; /* Make it span the full width */
+    transition: background 0.5s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px; /* Add padding */
+    animation: slideIn 0.5s forwards; /* Apply the animation to the navbar */
+    backdrop-filter: blur(5px); /* Blur effect for background */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Brand Logo */
+.custom-brand-logo {
+    display: flex;
+    align-items: center;
+    color: rgb(216, 24, 24);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Header Logo */
+.custom-header-logo {
+    width: 50px; /* Increased size for visibility */
+    height: 50px; /* Increased size for visibility */
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Header Animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Login Container */
+.custom-login-container {
+    display: flex; /* Flexbox to align buttons */
+    gap: 20px; /* Space between buttons */
+    margin-left: auto; /* Pushes buttons to the right */
+}
+
+/* Login Button */
+.custom-login-button,
+.custom-signup-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Adjusted padding */
+    font-size: 1rem;
+    border-radius: 25px; /* Rounded edges */
+    transition: background-color 0.3s ease; /* Smooth transitions */
+}
+
+/* Signup Button */
+.custom-signup-button {
+    background-color: #007bff; /* Blue color for Signup */
+}
+
+/* Hover Effects for Buttons */
+.custom-login-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.custom-signup-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Styles for Header */
+@media (max-width: 768px) {
+    .custom-navbar {
+        padding: 10px; /* Reduced padding for mobile */
+    }
+
+    .custom-header-logo {
+        width: 40px; /* Adjust logo size for mobile */
+        height: 40px;
+        margin-right: 8px;
+    }
+
+    .custom-brand-logo {
+        font-size: 1.2rem; /* Smaller font size for brand name */
+    }
+
+    .custom-login-container {
+        gap: 10px; /* Smaller gap between buttons on mobile */
+    }
+
+    .custom-login-button,
+    .custom-signup-button {
+        font-size: 0.85rem; /* Adjust font size for smaller screens */
+        padding: 8px 12px; /* Reduced padding */
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-navbar {
+        padding: 8px 10px;
+    }
+    .custom-header-logo {
+        width: 70px;
+        height: 70px;
+    }
+    .custom-brand-logo {
+        font-size: 1.1rem;
+    }
+    .custom-login-button,
+    .custom-signup-button {
+        font-size: 0.8rem;
+        padding: 7px 10px;
+    }
+}

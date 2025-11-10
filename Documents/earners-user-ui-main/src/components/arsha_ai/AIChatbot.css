@@ -1,0 +1,150 @@
+/* --- General and Container Styles --- */
+:root {
+    --whatsapp-bg-color: #e5ddd5;
+    --whatsapp-header-color: #005e54;
+    --whatsapp-outgoing-bubble-color: #e7ffdb;
+    --whatsapp-incoming-bubble-color: #ffffff;
+    --whatsapp-text-color: #111b21;
+    --whatsapp-secondary-text-color: #667781;
+    --whatsapp-send-button-color: #00a884;
+}
+
+.ew-chatbot-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--whatsapp-bg-color);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* --- Profile Header Bar --- */
+.ew-profile-header-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--whatsapp-header-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 10;
+}
+.ew-profile-pic { width: 40px; height: 40px; margin-right: 15px; border-radius: 50%; object-fit: cover; }
+.ew-profile-info { display: flex; flex-direction: column; }
+.ew-profile-name { margin: 0; font-size: 1.1em; font-weight: 600; }
+.ew-profile-tagline { font-size: 0.8em; font-weight: 400; opacity: 0.8; }
+
+/* --- Chat Section --- */
+.ew-chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    background-size: contain;
+}
+
+.ew-chat-box { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; }
+.ew-chat-box::-webkit-scrollbar { width: 6px; }
+.ew-chat-box::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; }
+
+/* --- Message Bubbles & Tails --- */
+.ew-message-container { position: relative; padding: 2px 0; display: flex; flex-direction: column; }
+.ew-message-row { display: flex; align-items: flex-end; gap: 8px; position: relative; z-index: 2; transition: transform 0.2s ease-out; max-width: 85%; user-select: none; }
+.ew-message-assistant { align-self: flex-start; }
+.ew-message-user { align-self: flex-end; }
+
+.ew-profile-pic-small { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; align-self: flex-end; margin-bottom: 2px; }
+.ew-message-bubble { padding: 6px 12px 8px 12px; border-radius: 8px; font-size: 0.95em; line-height: 1.4; word-wrap: break-word; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.13); position: relative; min-width: 80px; }
+.ew-message-bubble::after { content: ''; position: absolute; width: 0; height: 0; border-style: solid; }
+
+.ew-message-assistant-bubble { background-color: var(--whatsapp-incoming-bubble-color); color: var(--whatsapp-text-color); border-top-left-radius: 0; }
+.ew-message-assistant-bubble::after { top: 0; left: -8px; border-width: 0 10px 10px 0; border-color: transparent var(--whatsapp-incoming-bubble-color) transparent transparent; }
+
+.ew-message-user-bubble { background-color: var(--whatsapp-outgoing-bubble-color); color: var(--whatsapp-text-color); border-top-right-radius: 0; }
+.ew-message-user-bubble::after { top: 0; right: -8px; border-width: 0 0 10px 10px; border-color: transparent transparent transparent var(--whatsapp-outgoing-bubble-color); }
+
+.ew-message-meta { float: right; margin: 4px 0 0 10px; color: var(--whatsapp-secondary-text-color); font-size: 0.7em; line-height: 1; }
+.ew-message-timestamp { margin-right: 4px; }
+.ew-delivery-ticks { display: inline-block; width: 16px; height: 16px; vertical-align: middle; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 15.8'%3E%3Cpath fill='%2353bdeb' d='M15.3 3.1L14.3 2.1 13.3 3.2 6.3 10.2 2.8 6.7 1.8 5.7 0.7 6.8 2.2 8.3 5.7 11.8 6.7 12.8 7.8 11.8 15.3 4.2zM9.5 11.8L10.5 12.8 11.5 11.8 15.3 8.1 14.3 7 10.5 10.8z'/%3E%3C/svg%3E"); }
+
+
+/* <<< --- नया कोड यहाँ से शुरू --- >>> */
+
+/* --- Media & Caption Styles --- */
+/* जिस बबल में मीडिया (इमेज/वीडियो) हो, उसकी पैडिंग हटा दें */
+.ew-message-bubble.has-media {
+    padding: 0;
+    max-width: 350px; /* मीडिया के लिए बबल की अधिकतम चौड़ाई सेट करें */
+}
+
+/* मीडिया कंटेनर */
+.ew-media-container {
+    width: 100%;
+}
+
+/* इमेज और वीडियो को responsive बनाने के लिए */
+.ew-chat-media {
+    width: 100%;
+    height: auto; /* aspect ratio बनाए रखने के लिए */
+    display: block; /* नीचे के अतिरिक्त स्पेस को हटाने के लिए */
+    border-radius: 8px 8px 0 0; /* ऊपर के कोनों को गोल करें */
+}
+
+/* अगर मीडिया के साथ कैप्शन नहीं है, तो सभी कोनों को गोल करें */
+.ew-chat-media:only-child {
+    border-radius: 8px;
+}
+
+/* कैप्शन के लिए स्टाइल */
+.ew-caption {
+    padding: 8px 12px;
+}
+
+/* कैप्शन टेक्स्ट और मेटा (टाइम) के बीच थोड़ा स्पेस */
+.ew-caption p {
+    margin: 0 0 4px 0;
+}
+
+/* <<< --- नया कोड यहाँ खत्म --- >>> */
+
+
+/* --- SWIPE/DRAG & CLICK-TO-REPLY STYLES --- */
+.ew-reply-icon-drag { position: absolute; top: 0; bottom: 0; inset-inline-start: 20px; display: flex; align-items: center; color: var(--whatsapp-secondary-text-color); z-index: 1; transition: opacity 0.1s ease-out; opacity: 0; }
+.ew-reply-button { position: absolute; top: 50%; transform: translateY(-50%); inset-inline-start: -40px; background: #fff; border-radius: 50%; border: 1px solid #eee; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: opacity 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.1); color: #555; }
+
+@media (hover: hover) {
+    .ew-message-container:hover .ew-reply-button {
+        opacity: 1;
+    }
+}
+.ew-message-user {
+    .ew-reply-button { inset-inline-start: auto; inset-inline-end: -40px; }
+    .ew-reply-icon-drag { inset-inline-start: auto; inset-inline-end: 20px; }
+}
+
+/* --- RTL Language Support --- */
+[dir="rtl"] .ew-message-assistant { align-self: flex-end; }
+[dir="rtl"] .ew-message-user { align-self: flex-start; }
+[dir="rtl"] .ew-message-bubble { text-align: right; }
+[dir="rtl"] .ew-message-meta { float: left; margin-left: 0; margin-right: 10px; }
+[dir="rtl"] .ew-message-assistant-bubble::after { left: auto; right: -8px; border-width: 0 0 10px 10px; border-color: transparent transparent transparent var(--whatsapp-incoming-bubble-color); }
+[dir="rtl"] .ew-message-user-bubble::after { right: auto; left: -8px; border-width: 0 10px 10px 0; border-color: transparent var(--whatsapp-outgoing-bubble-color) transparent transparent; }
+
+/* --- Input Container --- */
+.ew-chat-input-container { display: flex; flex-direction: column; background-color: #f0f2f5; border-top: 1px solid #ddd; padding: 5px 10px; }
+.ew-replying-to-container { display: flex; align-items: stretch; background-color: #e9eef1; padding: 8px 12px; border-inline-start: 4px solid var(--whatsapp-send-button-color); border-radius: 8px; margin-bottom: 5px; }
+.ew-replying-to-content { flex-grow: 1; overflow: hidden; }
+.ew-replying-to-header { font-weight: bold; color: var(--whatsapp-send-button-color); font-size: 0.9em; }
+.ew-replying-to-text { margin: 2px 0 0 0; font-size: 0.9em; color: #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ew-reply-cancel-button { background: none; border: none; font-size: 1.2em; color: #888; cursor: pointer; padding: 0 5px; }
+.ew-chat-input-row { display: flex; align-items: flex-end; gap: 10px; }
+.ew-chat-input-main { flex: 1; display: flex; align-items: center; background-color: #fff; border-radius: 25px; padding: 0 10px; }
+.ew-chat-input-main textarea { flex: 1; resize: none; padding: 10px 5px; border: none; font-size: 1em; line-height: 1.4; max-height: 100px; overflow-y: auto; background-color: transparent; }
+.ew-chat-input-main textarea:focus { outline: none; }
+.ew-send-mic-button { background-color: var(--whatsapp-send-button-color); color: white; border-radius: 50%; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; transition: background-color 0.3s, transform 0.3s; border: none; cursor: pointer; }
+.ew-send-mic-button.ew-listening { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 168, 132, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(0, 168, 132, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 168, 132, 0); } }

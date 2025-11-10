@@ -1,0 +1,203 @@
+/* membersTree.css - MODERN & RESPONSIVE DESIGN */
+
+/* Google Fonts & FontAwesome */
+@import url('https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800');
+@import 'font-awesome/css/font-awesome.min.css';
+
+/* Wrapper for tree structure */
+.ew-tree-container {
+    padding: 20px 0;
+    margin: 0;
+    box-sizing: border-box;
+    min-height: 50vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: #f7f9fc; /* Light background for contrast */
+    font-family: 'Poppins', sans-serif;
+    overflow: auto;
+}
+
+.ew-tree {
+    width: 100%;
+    text-align: center;
+    overflow-x: auto;
+}
+
+/* Tree Structure */
+.ew-tree ul {
+    padding-top: 30px;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.ew-tree li {
+    display: table-cell;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 10px 15px 0 15px; /* Increased horizontal padding */
+    vertical-align: top;
+}
+
+/* ===== CONNECTOR LINE STYLE ===== */
+.ew-tree li::before, .ew-tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 2px solid #dde5f1; /* Softer, slightly thicker line */
+    width: 50%;
+    height: 30px;
+}
+
+.ew-tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 2px solid #dde5f1;
+}
+
+.ew-tree li:only-child::after, .ew-tree li:only-child::before {
+    display: none;
+}
+
+.ew-tree li:first-child::before {
+    border: 0 none;
+}
+
+.ew-tree li:last-child::after {
+    border: 0 none;
+}
+
+.ew-tree li:last-child::before {
+    border-right: 2px solid #dde5f1;
+    border-radius: 0 8px 0 0; /* Smoother radius */
+}
+
+.ew-tree li:first-child::after {
+    border-radius: 8px 0 0 0;
+}
+
+.ew-tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid #dde5f1;
+    width: 0;
+    height: 30px;
+}
+
+/* ===== MODERN CARD STYLE ===== */
+.ew-tree a {
+    background-color: #fff;
+    border-radius: 10px; /* Softer corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+    padding: 15px;
+    display: inline-grid;
+    text-decoration: none;
+    text-align: center;
+    min-width: 130px;
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+}
+
+/* ===== ICON STYLE ===== */
+.ew-tree a i {
+    font-size: 20px;
+    margin: 0 auto 12px auto;
+    color: #4a6da7;
+    background-color: #eef4ff;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 50%;
+}
+
+/* ===== TYPOGRAPHY STYLE ===== */
+.ew-tree a span {
+    color: #333;
+    font-size: 14px; /* Larger name font */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.ew-tree a span small {
+    font-weight: 500;
+    font-size: 12px;
+    color: #e74c3c; /* Red color for count stands out */
+}
+
+
+/* ===== HOVER EFFECT ===== */
+.ew-tree li a:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 20px rgba(74, 109, 167, 0.2); /* Stronger shadow on hover */
+    color: #000;
+}
+.ew-tree li a:hover+ul li::after,
+.ew-tree li a:hover+ul li::before,
+.ew-tree li a:hover+ul::before {
+    border-color: #a9bcd7; /* Darker line on hover for child elements */
+}
+
+
+/* Back Button and other styles remain the same */
+.ew-back-button {
+    padding: 12px 24px;
+    background-color: #f7c09e;
+    color: #2c1e16;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    z-index: 10;
+}
+
+
+.ew-loading-text, .ew-empty-state {
+    text-align: center;
+    width: 100%;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+/* ===== NEW: RESPONSIVE ADJUSTMENTS FOR SMALL SCREENS ===== */
+@media (max-width: 768px) {
+    .ew-tree li {
+        padding: 10px 5px 0 5px; /* Reduce space between cards */
+    }
+
+    .ew-tree a {
+        min-width: 90px; /* Make cards narrower */
+        padding: 10px 8px; /* Reduce padding inside cards */
+    }
+
+    .ew-tree a i {
+        width: 35px; /* Smaller icon */
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .ew-tree a span {
+        font-size: 12px; /* Smaller font for name */
+    }
+
+    .ew-tree a span small {
+        font-size: 10px; /* Smaller font for count */
+    }
+}

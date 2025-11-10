@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5;
+    overflow-x: hidden;
+}
+
+/* Main container */
+.ww-container {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    height: 50vh;
+    min-height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 1;
+    perspective: 1000px;
+    transition: filter 0.1s ease-in-out;
+}
+
+.ww-container.ww-dim {
+    filter: brightness(0.7);
+}
+
+/* Canvases */
+canvas {
+    position: absolute;
+    display: block;
+}
+
+#ww-waterCanvas {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    border-radius: 0 0 20px 20px;
+    z-index: 5;
+}
+
+#ww-cloudCanvas {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 6;
+    pointer-events: none;
+}
+
+#ww-rainCanvas {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    pointer-events: none;
+}
+
+#ww-lightningCanvas {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 12;
+    pointer-events: none;
+}
+
+/* Message box */
+.ww-message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    text-align: center;
+}
+
+.ww-message-box h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.ww-message-box p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.ww-message-box button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.ww-message-box button:hover {
+    background-color: #45a049;
+}
+
+/* Permission button */
+#ww-permissionButtonContainer {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+}
+
+#ww-permissionButton {
+    background-color: #4299e1;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#ww-permissionButton:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
+}
+
+#ww-permissionButton:active {
+    transform: translateY(0);
+}
+/* Brand Logos */
+.ww-brand-logos {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row; /* Logos always in a row */
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Gap between logos */
+  z-index: 20; /* Above rain, water, cloud */
+  pointer-events: auto; /* Clickable */
+  width: 100%;
+  height: 100%;
+}
+
+.ww-brand-logos img {
+   max-width: 180px; /* Max width for logos */
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                cursor: pointer; /* Indicate that images are clickable */
+                transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+            }
+
+.ww-brand-logos img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .ww-brand-logos img {
+    max-width: 120px; /* Smaller on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .ww-brand-logos img {
+    max-width: 100px; /* Even smaller on mobile */
+  }
+}

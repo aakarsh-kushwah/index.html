@@ -1,0 +1,39 @@
+/* Withdrawal Balance Card */
+.userbalanceamount {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Withdrawal Modal Card */
+.withdrawal-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Bank + User Info */
+.withdrawal-info p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Amount Buttons */
+.withdrawal-button-group button {
+  min-width: 70px;
+  margin: 4px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+  .withdrawal-info p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .withdrawal-info p {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,43 @@
+/* Card Wrapper */
+.hpi-card-wrapper {
+    margin-top: -43px;
+    position: relative;
+    z-index: 5;
+    border: none !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Row containing the items */
+.hpi-content-row {
+    display: flex;
+    justify-content: center; /* <<< THIS IS THE CHANGE (space-around to center) */
+    align-items: center;
+    width: 107%;
+}
+
+/* Individual Icon Items */
+.hpi-item {
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    padding: 10px 15px; /* Restored padding for better spacing */
+    border-radius: 10px;
+    text-align: center;
+    flex-shrink: 0; /* Prevent items from shrinking too much */
+}
+
+/* Hover Effect for Items */
+.hpi-item:hover {
+    transform: translateY(-5px);
+    background-color: #f8f9fa;
+}
+
+/* Text inside items */
+.hpi-item-text {
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.hpi-level-text {
+    font-weight: 500;
+}

@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Ensure html and body take full height and have no default margins/paddings */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Ensure full height for viewport units to work correctly */
+    font-family: 'Inter', sans-serif;
+    /* Apply font to body */
+    background-color: #f0f2f5;
+    /* Background for the overall page */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+}
+
+.ww-container {
+    position: relative;
+    width: 90%;
+    /* Responsive width */
+    max-width: 900px;
+    /* Max width for larger screens */
+    height: 50vh;
+    /* Responsive height */
+    min-height: 250px;
+    /* Minimum height to prevent collapse on very small screens */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* Center horizontally */
+    z-index: 1;
+    perspective: 1000px;
+    transition: filter 0.1s ease-in-out;
+    /* For lightning flash dimming */
+}
+
+.ww-container.ww-dim {
+    filter: brightness(0.7);
+    /* Dim the container during lightning flash */
+}
+
+canvas {
+    position: absolute;
+    display: block;
+}
+
+#ww-waterCanvas {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    /* Half water */
+    border-radius: 0 0 20px 20px;
+    /* Adjusted to match container's bottom border-radius */
+    z-index: 5;
+    /* z-index for water */
+}
+
+#ww-cloudCanvas {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    /* Cover the upper half of the container */
+    z-index: 6;
+    /* Above water, below text */
+    pointer-events: none;
+}
+
+#ww-rainCanvas {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    /* High z-index for rain above text */
+    pointer-events: none;
+}
+
+#ww-lightningCanvas {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 12;
+    /* High z-index for lightning at the very top */
+    pointer-events: none;
+}
+
+.ww-brand-logos {
+    /* Updated: Added padding-top to move logos up */
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    /* Always display in a row */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* Space between logos */
+    z-index: 10;
+    /* Logos between water and rain */
+    pointer-events: auto;
+    /* Enable pointer events for clicks */
+    width: 100%;
+    /* Take full width to center content */
+    height: 100%;
+    /* Take full height to center content */
+    padding-top: 50px;
+}
+
+.ww-brand-logos img {
+    max-width: 180px;
+    /* Max width for logos */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    /* Indicate that images are clickable */
+    transition: transform 0.2s ease-in-out;
+    /* Smooth hover effect */
+}
+
+.ww-brand-logos img:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
+}
+
+/* Mobile responsiveness for logos */
+@media (max-width: 768px) {
+    .ww-brand-logos {
+        padding-top: 20px;
+        /* Tablet के लिए कम पैडिंग */
+    }
+
+    .ww-brand-logos img {
+        max-width: 120px;
+        /* Smaller max width for tablets and smaller */
+    }
+}
+
+@media (max-width: 480px) {
+    .ww-brand-logos {
+        padding-top: 10px;
+        /* Mobile के लिए और भी कम पैडिंग */
+    }
+
+    .ww-brand-logos img {
+        max-width: 100px;
+        /* Even smaller max width for mobile phones */
+    }
+}
+
+/* Message box styling */
+.ww-message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none;
+    /* Controlled by React state */
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    text-align: center;
+}
+
+.ww-message-box h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.ww-message-box p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.ww-message-box button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.ww-message-box button:hover {
+    background-color: #45a049;
+}
+
+/* Container for permission button for mobile devices */
+#ww-permissionButtonContainer {
+    display: none;
+    /* This will now always be hidden by default, controlled by JS */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+}
+
+#ww-permissionButton {
+    background-color: #4299e1;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#ww-permissionButton:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
+}
+
+#ww-permissionButton:active {
+    transform: translateY(0);
+}

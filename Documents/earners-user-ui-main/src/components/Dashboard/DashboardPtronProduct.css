@@ -1,0 +1,461 @@
+/* PtronProduct.css */
+
+/* --- General Page Styling --- */
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    font-family: 'Poppins', sans-serif; /* Using a modern font */
+    color: #333;
+}
+
+.ptron-product-page {
+    background-color: #f0f2f5; /* Light background for the overall page */
+    min-height: 100vh;
+}
+
+/* --- Hero Promotional Video Section --- */
+.hero-video-container {
+    width: 100%;
+    height: 60vh; /* Make it take 60% of the viewport height */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Fallback background for video */
+    animation: fadeIn 1s ease-out; /* Subtle fade-in for the video section */
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the ENTIRE video content is visible */
+    display: block;
+}
+
+/* --- Main Product Content Section --- */
+.product-content-section {
+    background-color: #ffffff; /* Solid white background for the content */
+    border-top-left-radius: 0px; /* More pronounced rounded top corners */
+    border-top-right-radius: 0px;
+    margin-top: -80px; /* Pull the content section more over the video */
+    position: relative;
+    z-index: 2;
+    padding: 60px 0; /* More vertical padding */
+    box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow for depth */
+    animation: slideUp 0.8s ease-out forwards; /* Slide up animation for content */
+    animation-delay: 0.5s; /* Delay after video fade-in */
+    opacity: 0; /* Start hidden for animation */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+.product-details-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px; /* Increased horizontal padding */
+}
+
+/* --- Product Image Column --- */
+.product-image-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add some padding around the image box */
+}
+
+.earbud-image-box {
+    width: 100%;
+    max-width: 280px; /* **इमेज कंटेनर को और छोटा किया गया (original was 480px, then 350px)** */
+    margin-bottom: 25px;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff); /* Subtle gradient */
+    border-radius: 15px;
+    padding: 25px; /* **पैडिंग थोड़ी कम की गई** */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.08); /* Neumorphic shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out; /* Smooth transitions */
+}
+
+.earbud-image-box:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.5); /* Inset effect on hover */
+    transform: translateY(-5px);
+}
+
+.earbud-main-image {
+    max-height: 250px; /* **इमेज की ऊँचाई और कम की गई (original was 450px, then 320px)** */
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* More elaborate animation */
+}
+
+.earbud-main-image:hover {
+    transform: scale(1.08); /* More pronounced zoom on hover */
+}
+
+/* --- Color Options --- */
+.color-options-container {
+    display: flex;
+    flex-direction: column; /* Stack label and swatches */
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.color-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: -68px;
+}
+
+.color-swatches {
+    display: flex;
+    gap: 20px; /* Reduced space between color swatches */
+    justify-content: center;
+}
+
+.color-swatch {
+    width: 28px; /* Smaller size for color swatch */
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ccc; /* Lighter default border */
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch:hover {
+    transform: scale(1.15); /* Slightly larger enlarge on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-color: #007bff; /* Highlight on hover */
+}
+
+.color-swatch.active {
+    border-color: #007bff; /* Active color border */
+    transform: scale(1.2); /* More prominent when active */
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2); /* Outer glow for active */
+}
+
+/* --- Product Details Column --- */
+.product-details-col {
+    padding-left: 15px; /* **पैडिंग और कम की गई (original 50px, then 30px)** */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+}
+
+.product-title {
+    font-size: 3.2rem; /* **टाइटल का साइज़ थोड़ा कम किया गया ताकि फिट हो सके** */
+    font-weight: 800;
+    color: #1a1a1a; /* Darker, more premium color */
+    margin-bottom: 15px;
+    letter-spacing: -1px; /* Tighter letter spacing */
+}
+
+.product-tagline {
+    font-size: 1.2rem; /* **टैगलाइन का साइज़ थोड़ा कम किया गया** */
+    color: #666;
+    margin-bottom: -6px;
+    font-style: italic;
+}
+
+/* --- Price Section --- */
+.product-price-section {
+    display: flex;
+    align-items: baseline;
+    gap: 15px; /* **प्राइस एलिमेंट्स के बीच का गैप कम किया गया** */
+    margin-bottom: 35px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.current-price {
+    font-size: 2.5rem; /* **करंट प्राइस का साइज़ थोड़ा कम किया गया** */
+    font-weight: 900;
+    color: #007bff; /* Primary blue for price */
+    line-height: 1; /* Adjust line height for better alignment */
+}
+
+.original-price {
+    font-size: 1.2rem; /* **ओरिजिनल प्राइस का साइज़ थोड़ा कम किया गया** */
+    color: #888;
+    text-decoration: line-through;
+}
+
+.discount-info {
+    background-color: #dc3545; /* Red for discount */
+    color: #fff;
+    padding: 4px 10px; /* **पैडिंग थोड़ी कम की गई** */
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.85rem; /* **फ़ॉन्ट साइज़ थोड़ा कम किया गया** */
+    letter-spacing: 0.5px;
+}
+
+/* --- Buy Now Button --- */
+.buy-now-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 14px 30px; /* **पैडिंग थोड़ी कम की गई** */
+    font-size: 1.3rem; /* **फ़ॉन्ट साइज़ थोड़ा कम किया गया** */
+    font-weight: 700;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+    width: 100%; /* Make it full width */
+    max-width: 280px; /* **मैक्स-चौड़ाई थोड़ी कम की गई** */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 1px;
+}
+
+.buy-now-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 12px 25px rgba(0, 123, 255, 0.5);
+}
+
+.add-to-wishlist-button {
+    background-color: transparent;
+    border-color: #007bff;
+    color: #007bff;
+    padding: 10px 25px; /* **पैडिंग थोड़ी कम की गई** */
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 280px; /* **मैक्स-चौड़ाई थोड़ी कम की गई** */
+}
+
+.add-to-wishlist-button:hover {
+    background-color: #e6f2ff; /* Light blue background on hover */
+    color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+
+/* --- Detailed Features Section --- */
+.features-section, .additional-info-section {
+    padding: 60px 0; /* Consistent padding */
+    background-color: #f8f9fa; /* Light grey background for sections */
+    border-top: 1px solid #eee;
+}
+
+.section-title {
+    font-size: 2.8rem; /* Larger section titles */
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #007bff;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.feature-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Soft shadow for cards */
+    transition: all 0.3s ease;
+    height: 100%; /* Ensure all cards are same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* More prominent shadow on hover */
+}
+
+.feature-icon-wrapper {
+    background-color: #e6f2ff; /* Light blue background for icon */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: #007bff; /* Icon color */
+    font-size: 1.8rem; /* Icon size */
+}
+
+.feature-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.feature-card .card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* --- Additional Info Section (Warranty & Note) --- */
+.info-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    padding: 20px;
+}
+
+.info-text {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.info-text i {
+    color: #007bff; /* Blue for info icons */
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    .product-details-row {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    /* Tablet / Smaller Desktop */
+    .product-details-row {
+        flex-direction: column; /* Stacks columns */
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .product-image-col, .product-details-col {
+        padding: 0; /* Remove specific column padding */
+    }
+
+    .product-image-col {
+        margin-bottom: 40px;
+    }
+
+    .product-title {
+        font-size: 3rem;
+    }
+
+    .current-price {
+        font-size: 2.5rem;
+    }
+
+    .buy-now-button, .add-to-wishlist-button {
+        max-width: 280px; /* Adjust max width */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-video-container {
+        height: 45vh; /* Adjust height for tablets */
+    }
+
+    .product-content-section {
+        margin-top: -60px;
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Mobile */
+    .product-details-row {
+        padding: 0 15px;
+    }
+
+    .product-title {
+        font-size: 2.5rem;
+    }
+
+    .product-tagline {
+        font-size: 1.1rem;
+    }
+
+    .current-price {
+        font-size: 2rem;
+    }
+
+    .original-price {
+        font-size: 1.1rem;
+    }
+
+    .buy-now-button {
+        font-size: 1.2rem;
+        padding: 14px 25px;
+    }
+
+    .add-to-wishlist-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .hero-video-container {
+        height: 25vh; /* Further adjust height for mobile */
+    }
+
+    .product-content-section {
+        margin-top: -40px;
+        padding: 30px 0;
+
+        
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .feature-card {
+        padding: 15px;
+    }
+
+    .feature-title {
+        font-size: 1.4rem;
+    }
+
+    .feature-card .card-text {
+        font-size: 0.95rem;
+    }
+
+    .color-swatch {
+        width: 24px; /* Even smaller on mobile */
+        height: 24px;
+    }
+}

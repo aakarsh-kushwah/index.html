@@ -1,0 +1,352 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* General Styling for the entire section */
+.ew-about-section {
+    padding: 80px 20px; /* More generous padding for a spacious feel */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Soft, modern light blue/gray gradient */
+    color: #334e68; /* Deep blue-gray for main text, good contrast */
+    font-family: 'Poppins', sans-serif; /* Applied Poppins font */
+    line-height: 1.8; /* Excellent line height for readability */
+    text-align: center; /* Center align all content */
+    min-height: 100vh; /* Ensures the section takes at least the full viewport height */
+    display: flex; /* Flexbox for vertical centering */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    overflow: hidden; /* Hide any overflow, especially from animations */
+}
+
+/* Container for the content block */
+.ew-about-container {
+    max-width: 950px; /* Slightly wider for more content flow */
+    margin: 0 auto; /* Center the container */
+    background-color: #ffffff; /* Pure white background for content */
+    padding: 50px; /* Increased internal padding */
+    border-radius: 18px; /* More rounded corners for a softer look */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Stronger, yet soft shadow for depth */
+    animation: slideInUp 1s ease-out forwards; /* Slide up and fade in animation */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(30px); /* Start slightly below */
+    box-sizing: border-box;
+    position: relative; /* Needed for pseudo-elements for decorative touches */
+    z-index: 1; /* Ensure content is above any background elements */
+}
+
+/* Animation for the container */
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Decorative elements for the container */
+.ew-about-container::before,
+.ew-about-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 188, 212, 0.1); /* Light teal blob */
+    filter: blur(80px); /* Soft blur effect */
+    z-index: -1; /* Send behind content */
+}
+
+.ew-about-container::before {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    left: -50px;
+}
+
+.ew-about-container::after {
+    width: 200px;
+    height: 200px;
+    bottom: -70px;
+    right: -70px;
+    background: rgba(76, 175, 80, 0.1); /* Light green blob */
+}
+
+
+/* Logo Styling */
+.ew-about-logo-container {
+    margin-bottom: 40px; /* More space below the logo */
+}
+
+.ew-about-logo {
+    max-width: 220px; /* Slightly larger logo */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.1)); /* Enhanced shadow for the logo */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.ew-about-logo:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Text-based logo for placeholder */
+.ew-about-logo-text {
+    font-size: 3em; /* Larger, more impactful text logo */
+    font-weight: 900; /* Extra bold */
+    color: #00796b; /* Strong Teal color */
+    letter-spacing: 3px; /* More prominent letter spacing */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.15); /* Deeper text shadow */
+    transition: color 0.3s ease;
+}
+
+.ew-about-logo-text:hover {
+    color: #004d40; /* Darker teal on hover */
+}
+
+/* Main Heading (About Us) */
+.ew-about-heading {
+    font-size: 3.2em; /* Bigger, bolder heading */
+    color: #00796b; /* Strong Teal */
+    margin-bottom: 40px;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px; /* More space for underline */
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Uppercase for prominence */
+}
+
+.ew-about-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100px; /* Longer underline */
+    height: 5px; /* Thicker underline */
+    background-color: #00bcd4; /* Brighter Teal */
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for underline */
+}
+
+/* Paragraphs */
+.ew-about-paragraph {
+    font-size: 1.15em; /* Slightly larger, very readable */
+    margin-bottom: 30px; /* More space between paragraphs */
+    color: #526c80; /* Softer dark gray */
+    text-align: justify; /* Justify for a formal, clean look */
+    max-width: 800px; /* Control paragraph width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ew-about-paragraph strong {
+    color: #00796b; /* Highlight important words */
+    font-weight: 700;
+}
+
+/* Why Us Section */
+.ew-about-why-us {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: #e6f7ff; /* Very light blue background for this section */
+    padding: 40px; /* More padding */
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08); /* More prominent inner shadow */
+    border: 1px solid #cceeff; /* Light border */
+}
+
+/* Sub-headings */
+.ew-about-subheading {
+    font-size: 2.2em; /* Larger sub-heading */
+    color: #00796b; /* Teal */
+    margin-bottom: 30px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.ew-about-subheading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px; /* Shorter, elegant underline */
+    height: 4px;
+    background-color: #00bcd4;
+    border-radius: 2px;
+}
+
+/* List for "Why Us" */
+.ew-about-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Align list items to the left */
+}
+
+.ew-about-list li {
+    font-size: 1.1em;
+    margin-bottom: 20px; /* More space between list items */
+    padding-left: 35px; /* More space for custom bullet */
+    position: relative;
+    color: #4a657c; /* Slightly darker gray for list text */
+}
+
+.ew-about-list li::before {
+    content: ''; /* Remove star emoji */
+    display: inline-block;
+    width: 10px; /* Size of the bullet */
+    height: 10px; /* Size of the bullet */
+    background-color: #00796b; /* Teal color for the bullet */
+    border-radius: 50%; /* Make it a circle */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 15px; /* Space between bullet and text */
+}
+
+.ew-list-highlight {
+    color: #00796b; /* Highlight key phrases */
+    font-weight: 700;
+}
+
+/* Call to Action Paragraph */
+.ew-about-call-to-action {
+    font-size: 1.4em; /* Larger, very impactful call to action */
+    font-weight: 700; /* Bolder */
+    color: #004d40; /* Darker teal for strong emphasis */
+    margin-top: 60px; /* More space above */
+    padding: 25px; /* More padding */
+    background-color: #ccffee; /* Light green background for emphasis */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Stronger shadow */
+    animation: bounceIn 1.5s ease-out; /* More dynamic entry animation for CTA */
+    display: inline-block; /* To apply padding and margin correctly for width */
+    max-width: 800px;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .ew-about-container {
+        padding: 40px;
+    }
+    .ew-about-heading {
+        font-size: 2.8em;
+    }
+    .ew-about-paragraph {
+        font-size: 1.05em;
+    }
+    .ew-about-subheading {
+        font-size: 1.8em;
+    }
+    .ew-about-call-to-action {
+        font-size: 1.25em;
+    }
+}
+
+@media (max-width: 768px) {
+    .ew-about-section {
+        padding: 60px 15px;
+    }
+    .ew-about-container {
+        padding: 30px;
+        border-radius: 12px;
+    }
+    .ew-about-logo {
+        max-width: 180px;
+    }
+    .ew-about-logo-text {
+        font-size: 2.5em;
+    }
+    .ew-about-heading {
+        font-size: 2.4em;
+        margin-bottom: 30px;
+    }
+    .ew-about-heading::after {
+        width: 80px;
+    }
+    .ew-about-paragraph {
+        font-size: 1em;
+        text-align: left; /* Switch to left-align for better readability on smaller screens */
+    }
+    .ew-about-why-us {
+        padding: 25px;
+    }
+    .ew-about-subheading {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    .ew-about-list li {
+        font-size: 0.95em;
+        padding-left: 30px;
+    }
+    .ew-about-list li::before {
+        width: 8px; /* Adjust bullet size for smaller screens */
+        height: 8px;
+    }
+    .ew-about-call-to-action {
+        font-size: 1.1em;
+        padding: 20px;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ew-about-section {
+        padding: 40px 10px;
+    }
+    .ew-about-container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .ew-about-logo {
+        max-width: 140px;
+    }
+    .ew-about-logo-text {
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+    .ew-about-heading {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+    .ew-about-heading::after {
+        width: 60px;
+        height: 3px;
+    }
+    .ew-about-paragraph {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+    .ew-about-why-us {
+        padding: 15px;
+    }
+    .ew-about-subheading {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    .ew-about-subheading::after {
+        width: 40px;
+        height: 2px;
+    }
+    .ew-about-list li {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        padding-left: 25px;
+    }
+    .ew-about-list li::before {
+        width: 7px; /* Adjust bullet size for very small screens */
+        height: 7px;
+    }
+    .ew-about-call-to-action {
+        font-size: 0.95em;
+        padding: 15px;
+        margin-top: 25px;
+    }
+}

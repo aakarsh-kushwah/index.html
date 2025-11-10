@@ -1,0 +1,360 @@
+/* ReferenceLinkCard.css */
+
+/* Fonts - सुनिश्चित करें कि ये आपके प्रोजेक्ट में इम्पोर्ट किए गए हों */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Custom class for the Card to ensure styles apply specifically */
+.rlc-card-custom {
+    border: none;
+    border-radius: 20px; /* More pronounced rounded corners */
+    background: linear-gradient(135deg, #e0f2f7 0%, #c1e4f3 100%); /* Soft, inviting gradient background */
+    box-shadow: 0 15px 40px rgba(0, 70, 100, 0.1); /* Deeper, more sophisticated shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding: 30px; /* Increased padding for a spacious feel */
+    max-width: 550px; /* Slightly wider for better presentation */
+    margin: 30px auto; /* Center with good vertical spacing */
+    position: relative; /* For potential future animations/elements */
+    overflow: hidden; /* Ensure gradient and shadow look clean */
+}
+
+/* Optional: Subtle background pattern for added texture */
+.rlc-card-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239de3f7' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4v-4H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3; /* Make it very subtle */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* No hover effect on the card itself when it's inside a modal to avoid visual clutter */
+.modal .rlc-card-custom {
+    transform: none;
+    box-shadow: none;
+    margin: 0; /* Remove margin when in modal */
+    background: #ffffff; /* Modal-specific background, if needed */
+}
+
+.rlc-card-title {
+    font-family: 'Montserrat', sans-serif; /* Modern, strong font */
+    font-size: 2.2rem; /* Even larger, more impactful title */
+    font-weight: 700; /* Extra bold for prominence */
+    color: #2c3e50; /* Deep, professional text color */
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px; /* Space for an underline effect */
+}
+
+/* Animated underline for the title */
+.rlc-card-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px; /* Shorter, modern underline */
+    height: 4px;
+    background-color: #007bff; /* Primary brand color */
+    border-radius: 2px;
+}
+
+.rlc-card-text {
+    font-family: 'Open Sans', sans-serif; /* A good readable font for body text */
+    font-size: 1.1rem; /* Slightly larger for better readability */
+    color: #5a6268; /* Softer text color for description */
+    line-height: 1.7;
+    margin-bottom: 30px; /* More space before the input field */
+}
+
+/* Input field for the reference link */
+.rlc-input.form-control {
+    font-family: 'monospace', sans-serif;
+    font-size: 1.05rem; /* Slightly larger link text */
+    color: #0056b3;
+    background-color: #f0f8ff; /* Lighter, more appealing background */
+    border: 1px solid #a7d9f7; /* Softer border color */
+    border-radius: 12px; /* Match card border-radius for consistency */
+    padding: 15px 20px; /* More padding for a premium feel */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.08); /* More noticeable inner shadow */
+    transition: all 0.3s ease;
+    cursor: text;
+    text-align: center; /* Center the link text */
+    font-weight: 600; /* Make the link stand out */
+}
+
+.rlc-input.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.35), inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+/* Buttons container */
+.rlc-buttons-container {
+    margin-top: 25px; /* Space above buttons */
+    gap: 20px; /* Increased spacing between buttons */
+}
+
+/* Common button styles */
+.rlc-button.btn {
+    font-family: 'Montserrat', sans-serif; /* Match title font for consistency */
+    font-size: 1.05rem; /* Slightly larger button text */
+    font-weight: 600;
+    padding: 12px 25px; /* More padding */
+    border-radius: 30px; /* More prominent pill-shaped buttons */
+    transition: all 0.3s ease, transform 0.2s ease; /* Add transform for hover effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for buttons */
+}
+
+.rlc-button.btn svg {
+    margin-right: 10px; /* Increased margin for icon */
+    font-size: 1.2rem; /* Slightly larger icons */
+}
+
+/* Copy Button Specific Styles */
+.rlc-button.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: #ffffff; /* White background for outline effect */
+}
+
+.rlc-button.btn-outline-primary:hover {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient hover effect */
+    color: white;
+    border-color: #0056b3;
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+}
+
+/* Share Button Specific Styles */
+.rlc-button.btn-outline-info {
+    color: #17a2b8;
+    border-color: #17a2b8;
+    background-color: #ffffff;
+}
+
+.rlc-button.btn-outline-info:hover {
+    background: linear-gradient(45deg, #17a2b8, #117a8b);
+    color: white;
+    border-color: #117a8b;
+    box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* --- Modal Specific Overrides (for overall modal appearance) --- */
+/* These should preferably be in a global or modal-specific CSS file if modals are generic */
+.modal-content {
+    border-radius: 25px; /* Even more rounded corners for the modal itself */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); /* Deeper, more noticeable shadow for the modal */
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(90deg, #6dd5ed, #2193b0); /* Engaging gradient for modal header */
+    color: white;
+    border-bottom: none; /* Remove default border */
+    padding: 25px 30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    position: relative; /* For wave effect */
+    overflow: hidden;
+}
+
+/* Optional wave effect for modal header */
+.modal-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    width: 200%;
+    height: 30px;
+    background: #fdfdfd; /* Match modal body background */
+    border-radius: 50% / 100% 100% 0 0;
+    transform: translateY(50%);
+    z-index: 1;
+}
+
+.modal-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: white; /* Title color should be white for gradient background */
+    font-size: 1.8rem;
+    z-index: 2; /* Bring title above wave effect */
+    position: relative;
+}
+
+.modal-header .btn-close {
+    filter: invert(1); /* White close button for dark background */
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 35px 30px; /* More generous padding */
+    background-color: #fdfdfd; /* Very light background for the body */
+    position: relative;
+    z-index: 0;
+}
+
+/* Remove card specific margins/shadows when it's inside the modal body */
+.modal-body .rlc-card-custom {
+    margin: 0;
+    max-width: none;
+    box-shadow: none;
+    background: none; /* Card background should be transparent in modal body */
+    padding: 0;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .rlc-card-custom {
+        padding: 20px;
+        max-width: 90%; /* Allow wider card on smaller screens */
+        margin: 20px auto;
+        border-radius: 15px;
+    }
+    .rlc-card-custom::before { /* Adjust pattern for smaller screens */
+        width: 150%;
+        left: -25%;
+    }
+
+    .rlc-card-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    .rlc-card-title::after {
+        height: 3px;
+        width: 50px;
+    }
+
+    .rlc-card-text {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .rlc-input.form-control {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+        border-radius: 10px;
+    }
+
+    .rlc-buttons-container {
+        gap: 15px;
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+
+    .rlc-button.btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-radius: 25px;
+        width: 100%; /* Full width for stacked buttons */
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .rlc-button.btn svg {
+        font-size: 1.1rem;
+        margin-right: 8px;
+    }
+
+    .rlc-button.btn:hover {
+        transform: translateY(-2px) scale(1.01); /* Slightly less pronounced hover */
+    }
+
+    /* Modal specific */
+    .modal-content {
+        border-radius: 15px;
+    }
+    .modal-header {
+        padding: 20px 25px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    .modal-header::before {
+        height: 20px;
+        transform: translateY(40%);
+    }
+    .modal-title {
+        font-size: 1.6rem;
+    }
+    .modal-body {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .rlc-card-custom {
+        padding: 15px;
+        margin: 15px auto;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 70, 100, 0.08);
+    }
+    .rlc-card-custom::before {
+        opacity: 0.2;
+    }
+
+    .rlc-card-title {
+        font-size: 1.6rem;
+        padding-bottom: 8px;
+    }
+    .rlc-card-title::after {
+        width: 40px;
+    }
+
+    .rlc-card-text {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
+    .rlc-input.form-control {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+
+    .rlc-buttons-container {
+        gap: 10px;
+    }
+
+    .rlc-button.btn {
+        font-size: 0.9rem;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .rlc-button.btn svg {
+        font-size: 1rem;
+        margin-right: 6px;
+    }
+
+    /* Modal specific */
+    .modal-content {
+        border-radius: 10px;
+    }
+    .modal-header {
+        padding: 15px 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .modal-header::before {
+        height: 15px;
+        transform: translateY(30%);
+    }
+    .modal-title {
+        font-size: 1.4rem;
+    }
+    .modal-body {
+        padding: 20px 15px;
+    }
+}

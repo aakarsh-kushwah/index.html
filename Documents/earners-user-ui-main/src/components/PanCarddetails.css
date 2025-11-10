@@ -1,0 +1,173 @@
+/* PanCarddetails.css */
+
+/* Fonts - Import Poppins and other fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Global styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Page Background */
+.finance-bg {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4b6cb7, #182848);
+    padding: 20px;
+}
+
+/* Main Container (Glassmorphism Effect) */
+.finance-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+/* Title */
+.finance-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Disclaimer Alert */
+.finance-disclaimer {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.finance-icon-warn {
+    color: #ffc107;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.finance-disclaimer p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Form Styling */
+.finance-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.finance-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.finance-form-group label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.finance-required {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.finance-form-group input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.finance-form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.finance-form-group input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Messages */
+.finance-message {
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.finance-error {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.finance-success {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+/* Button */
+.finance-submit-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.finance-submit-button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+.finance-submit-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .finance-container {
+        padding: 20px;
+    }
+    .finance-title {
+        font-size: 1.5rem;
+    }
+    .finance-disclaimer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .finance-form-group input,
+    .finance-submit-button {
+        padding: 10px 12px;
+        font-size: 1rem;
+    }
+}

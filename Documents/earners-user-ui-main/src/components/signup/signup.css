@@ -1,0 +1,254 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.success-text {
+  color: #2a2b41;
+  font-weight: bold;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #667eea, #bfb8c5); /* Highlight background */
+  background: linear-gradient(135deg, #cecbd1, #2575fc);
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.otp-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.otp-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px; /* Added margin between OTP fields and timer */
+}
+
+.otp-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.otp-input:focus {
+  border-color: #007bff;
+}
+
+.otp-timer {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgb(43, 43, 46);
+  text-align: center;
+}
+
+.error-text {
+  color: #ebe5e5;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.otp-group {
+  display: flex;
+  align-items: center;
+}
+
+.otp-input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.generate-otp-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.generate-otp-button:hover {
+  background-color: #0056b3;
+}
+
+/* Container */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 1rem;
+}
+
+/* Glassmorphic Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px) saturate(180%);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 450px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 36px rgba(31, 38, 135, 0.35);
+}
+
+/* Title Styling */
+.signup-title {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 0.75rem;
+  padding-right: 3.5rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(240, 240, 240, 0.7);
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.signup-input:focus {
+  outline: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Toggle Password */
+.toggle-password {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.toggle-password label {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* Error Text */
+.error-text {
+  color: #000000;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Terms Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.checkbox-container label {
+  margin-left: 0.5rem;
+  color: #555;
+}
+
+.checkbox-container a {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.checkbox-container a:hover {
+  color: #003d80;
+}
+
+/* Submit Button */
+.signup-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.signup-button:hover {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  transform: translateY(-2px);
+}
+
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Login Link */
+.signup-login {
+  margin-top: 1rem;
+  text-align: center;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.signup-login a {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.signup-login a:hover {
+  color: #003d80;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 500px) {
+  .glass-card {
+    padding: 1.5rem;
+  }
+  .signup-title {
+    font-size: 1.5rem;
+  }
+  .signup-button {
+    font-size: 1rem;
+  }
+}

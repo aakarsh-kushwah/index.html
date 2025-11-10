@@ -1,0 +1,138 @@
+/* StatusModal.css */
+.status-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.status-modal-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px; /* आपके चैटबॉट की चौड़ाई से मेल खाता है */
+    max-height: 95vh;
+    background-color: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.status-progress-container {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+}
+
+.progress-bar-background {
+    flex: 1;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-foreground {
+    height: 100%;
+    background-color: #fff;
+    width: 0; /* डिफ़ॉल्ट चौड़ाई */
+}
+
+@keyframes fillProgress {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.progress-bar-foreground.active {
+    animation-name: fillProgress;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards; /* एनिमेशन के बाद 100% पर रोकता है */
+}
+
+.status-header {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+    z-index: 10;
+}
+
+.status-profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-profile-info {
+    font-size: 0.9em;
+}
+
+.status-close-button {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.status-close-button:hover {
+    opacity: 1;
+}
+
+.status-media-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px; /* हेडर और प्रोग्रेस बार के लिए जगह */
+    padding-bottom: 20px;
+}
+
+.status-media {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.status-nav-prev,
+.status-nav-next {
+    position: absolute;
+    top: 60px; /* हेडर एरिया के नीचे */
+    bottom: 0;
+    width: 30%; /* क्लिक करने योग्य एरिया की चौड़ाई */
+    z-index: 5;
+    cursor: pointer;
+}
+
+.status-nav-prev {
+    left: 0;
+}
+
+.status-nav-next {
+    right: 0;
+}

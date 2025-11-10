@@ -1,0 +1,251 @@
+/* GleamGlamVideoCarousel.css - Videos in a Row, Full Video Visibility (Contain) */
+
+/* General Section Styling */
+.gleam-glam-video-section-container {
+    padding: 0;
+}
+
+.product-video-section {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* For border-radius */
+}
+
+.product-video-section .section-title {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Video Row Wrapper (Always horizontal with scroll) */
+.video-row-wrapper {
+    display: flex; /* Videos ko ek row mein rakhega */
+    flex-wrap: nowrap; /* IMP: Videos ko wrap hone se rokein */
+    overflow-x: auto; /* IMP: Horizontal scrolling enable karein */
+    -webkit-overflow-scrolling: touch; /* iOS par smooth scrolling */
+    gap: 20px; /* Videos ke beech space */
+    padding: 0 20px 20px; /* Padding for scrollable area and scrollbar */
+    justify-content: flex-start; /* Items ko left align karein */
+    align-items: flex-start; /* Items ko top align karein */
+    scroll-snap-type: x mandatory; /* Optional: Scroll snapping */
+}
+
+/* Hide scrollbar for aesthetic purposes */
+.video-row-wrapper::-webkit-scrollbar {
+    display: none;
+}
+.video-row-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Individual Video Item Card */
+.video-item-card {
+    flex-shrink: 0; /* IMP: Cards ko shrink hone se rokein */
+    width: 380px; /* Har card ki fixed width, badha di hai */
+    max-width: 45vw; /* Max width relative to viewport for larger screens */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border 0.2s ease;
+    scroll-snap-align: start; /* Scroll snap point */
+    overflow: hidden;
+    border: 3px solid transparent;
+    position: relative;
+}
+
+.video-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Active Audio Indicator - adds a blue border to the currently active (unmuted) video */
+.video-item-card.active-audio {
+    border-color: #007bff; /* Blue border for active audio video */
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.3), 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* The 'Unmuted' text badge has been removed as per your request. */
+/* If you ever want to re-add it, uncomment the following CSS block: */
+/*
+.video-item-card.active-audio::after {
+    content: 'Unmuted';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 100;
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4);
+    }
+    to {
+        box-shadow: 0 0 0 8px rgba(0, 123, 255, 0);
+    }
+}
+*/
+
+.video-container-row {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (Adjust if your videos are different) */
+    height: 0;
+    overflow: hidden;
+    background-color: #000; /* Black bars for video container */
+}
+
+.video-element-row {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures entire video is visible without cropping */
+    transition: transform 0.3s ease-in-out;
+}
+
+.video-overlay-row {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 20%);
+    pointer-events: none; /* Allows clicks to pass through to the video container */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+    z-index: 10;
+}
+
+.video-controls-row {
+    pointer-events: all; /* Allows interaction with buttons inside the overlay */
+    display: flex;
+    gap: 8px;
+}
+
+.mute-button-row, .fullscreen-button-row {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: white !important;
+    font-size: 1.1rem !important;
+    padding: 8px !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mute-button-row:hover, .fullscreen-button-row:hover {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.video-caption-row {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 12px 15px;
+    text-align: left;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.video-caption-row h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 991.98px) {
+    .product-video-section {
+        padding: 20px 0;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .product-video-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .video-row-wrapper {
+        padding: 0 15px 15px;
+        gap: 15px;
+    }
+
+    .video-item-card {
+        width: 280px;
+        min-width: 260px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        border-width: 2px;
+    }
+
+    .mute-button-row, .fullscreen-button-row {
+        font-size: 1rem !important;
+        width: 40px !important;
+        height: 40px !important;
+        padding: 8px !important;
+    }
+    .video-caption-row {
+        padding: 10px 15px;
+        min-height: 45px;
+    }
+    .video-caption-row h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .product-video-section .section-title {
+        font-size: 1.6rem;
+    }
+    .video-row-wrapper {
+        padding: 0 10px 10px;
+        gap: 10px;
+    }
+    .video-item-card {
+        width: 240px;
+        min-width: 220px;
+    }
+    .video-caption-row h3 {
+        font-size: 0.95rem;
+    }
+    .mute-button-row, .fullscreen-button-row {
+        font-size: 0.9rem !important;
+        width: 35px !important;
+        height: 35px !important;
+        padding: 6px !important;
+    }
+}

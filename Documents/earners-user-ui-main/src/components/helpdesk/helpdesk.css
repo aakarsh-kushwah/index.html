@@ -1,0 +1,88 @@
+/* Help Desk Page Styles */
+.helpdesk-page__container {
+  max-width: 700px;
+  margin: 50px auto;
+}
+
+.helpdesk-card__container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.helpdesk-card__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.helpdesk-card__description {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+.helpdesk-card__whatsapp-button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: #25d366;
+  border: none;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.helpdesk-card__whatsapp-button:hover {
+  background-color: #1ebe5b;
+}
+
+.whatsapp-icon {
+  color: #25d366;
+}
+
+.helpdesk-card__divider {
+  margin: 30px 0;
+  border-color: #dcdcdc;
+}
+
+.helpdesk-card__social-media {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.helpdesk-card__social-title {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.helpdesk-card__social-link {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.helpdesk-card__social-link:hover {
+  color: #007bff;
+}
+
+@media (max-width: 576px) {
+  
+  .helpdesk-page__container {
+    padding: 20px;
+    margin: 10px auto;
+  }
+
+  .helpdesk-card__title {
+    font-size: 1.5rem;
+  }
+
+  .helpdesk-card__whatsapp-button {
+    font-size: 1rem;
+  }
+
+  .helpdesk-card__social-title {
+    font-size: 1rem;
+  }
+}
