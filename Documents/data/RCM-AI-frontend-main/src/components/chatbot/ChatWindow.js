@@ -7,7 +7,7 @@ import {
 import './ChatWindow.css'; 
 
 // --- CONFIGURATION ---
-const WHATSAPP_NUMBER = "917999440809"; 
+const WHATSAPP_NUMBER = "919343743114"; 
 const START_MSG = "Namaste RCM Assistant, mujhe business plan janna he.";
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000'; 
 

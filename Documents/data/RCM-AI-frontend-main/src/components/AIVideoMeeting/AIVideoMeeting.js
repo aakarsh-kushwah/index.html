@@ -1,268 +1,158 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { 
-    Mic, MicOff, Video, VideoOff, X, 
-    RefreshCw, Sparkles, ChevronDown, ScanLine,
-    ShoppingBag, Tag, Info
-} from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Camera, Mic, Video, MoreVertical, PhoneOff, Sparkles, User } from 'lucide-react';
 import './AIVideoMeeting.css';
 
 const AIVideoMeeting = () => {
-    const navigate = useNavigate();
     const videoRef = useRef(null);
-    const streamRef = useRef(null);
+    const [isCameraOn, setIsCameraOn] = useState(false);
+    const [scanning, setScanning] = useState(false);
+    const [transcript, setTranscript] = useState("AI is ready...");
+    const [voices, setVoices] = useState([]);
 
-    // --- UI & Camera States ---
-    const [isCameraOn, setIsCameraOn] = useState(true);
-    const [isMicOn, setIsMicOn] = useState(true);
-    // 'environment' tries back camera first, falls back to front on laptops
-    const [facingMode, setFacingMode] = useState('environment'); 
-    
-    // --- AI Workflow States ---
-    // 'idle' | 'scanning' (laser effect) | 'analyzing' (spinner) | 'presenting' (showing result)
-    const [aiState, setAiState] = useState('idle'); 
-    const [transcript, setTranscript] = useState("RCM AI Vision Ready. Tap scan to identify.");
-    const [detectedProduct, setDetectedProduct] = useState(null);
+    // 1. Load Voices (Microsoft Edge Priority)
+    useEffect(() => {
+        const loadVoices = () => {
+            const availVoices = window.speechSynthesis.getVoices();
+            setVoices(availVoices);
+        };
+        
+        loadVoices();
+        // Chrome/Edge load voices asynchronously
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }, []);
 
-    // --- 1. Robust Camera Setup (Works on Laptop & Mobile) ---
-    const startCamera = useCallback(async () => {
-        if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
-        if (!isCameraOn) return;
-
-        try {
-            let stream;
-            try {
-                // Try high-res back camera first
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: facingMode, width: { ideal: 1920 }, height: { ideal: 1080 } },
-                    audio: true
-                });
-            } catch (e) {
-                console.warn("High-res cam failed, falling back.");
-                // Fallback for laptops or older devices
-                stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            }
-
-            streamRef.current = stream;
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-                // Ensure video plays even if browser blocks autoplay
-                await videoRef.current.play().catch(e => console.error("Play error:", e));
-            }
-        } catch (err) {
-            console.error("Camera Error", err);
-            setTranscript("Error: Camera access denied or unavailable.");
-        }
-    }, [facingMode, isCameraOn]);
-
+    // 2. Camera Logic (Laptop Friendly)
     useEffect(() => {
         startCamera();
-        return () => {
-            if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
-        };
-    }, [startCamera]);
+        return () => stopCamera();
+    }, []);
 
-    // --- 2. SIMULATION: The AI Scan Workflow ---
-    // This simulates what will happen when Groq API + Your DB connect later.
-    const handleScanTrigger = () => {
-        if(aiState !== 'idle') return;
+    const startCamera = async () => {
+        try {
+            // Laptop ke liye simple constraints
+            const stream = await navigator.mediaDevices.getUserMedia({ 
+                video: true, // Auto-detect webcam
+                audio: false 
+            });
 
-        // 1. Start Scanning Visuals
-        setAiState('scanning');
-        setTranscript("Acquiring target geometry...");
-        setDetectedProduct(null); // Close previous sheet if open
-
-        // Simulation: Wait 1.5s for "Scanning"
-        setTimeout(() => {
-            // 2. Start Analyzing Visuals (Simulating network call to Groq/DB)
-            setAiState('analyzing');
-            setTranscript("Analyzing with RCM Knowledge Base...");
-
-            // Simulation: Wait 2s for "API Response"
-            setTimeout(() => {
-                // 3. Present Results (Simulating DB data return)
-                simulateBackendResponse();
-            }, 2000);
-
-        }, 1500);
-    };
-
-    const simulateBackendResponse = () => {
-        // MOCK DATA - This structure will come from your Admin Panel Database later
-        const mockDBProducts = [
-            {
-                id: 101,
-                name: "RCM Nutricharge Men",
-                category: "Health Supplement",
-                price: "₹375",
-                pv: "275 PV",
-                description: "A comprehensive daily nutritional supplement specifically formulated for men to fulfill their daily need of vitamins and minerals. Boosts energy and immunity."
-            },
-            {
-                id: 102,
-                name: "Good Dot Veg Bites",
-                category: "Plant Protein",
-                price: "₹190",
-                pv: "110 PV",
-                description: "Vegetarian meat alternative bite-sized chunks. High in protein, zero cholesterol. Ideal for curries, biryanis, and snacks."
-            },
-             {
-                id: 103,
-                name: "Health Guard Rice Bran Oil",
-                category: "Cooking Essentials",
-                price: "₹165 (1L)",
-                pv: "80 PV",
-                description: "Physically refined rice bran oil containing 1400mg Oryzanol. Known as 'Heart Oil' for its cholesterol-lowering properties."
+            if (videoRef.current) {
+                videoRef.current.srcObject = stream;
+                videoRef.current.onloadedmetadata = () => {
+                    videoRef.current.play();
+                    setIsCameraOn(true);
+                };
             }
-        ];
-        
-        const randomProduct = mockDBProducts[Math.floor(Math.random() * mockDBProducts.length)];
-        
-        setDetectedProduct(randomProduct);
-        setAiState('presenting');
-        setTranscript(`Identified: ${randomProduct.name}`);
+        } catch (err) {
+            console.error("Camera Error:", err);
+            setTranscript("Camera blocked! Check permissions.");
+        }
     };
 
-
-    // --- Utilities ---
-    const toggleCam = () => setIsCameraOn(!isCameraOn);
-    const toggleMic = () => setIsMicOn(!isMicOn);
-    const switchCam = () => setFacingMode(prev => prev === 'user' ? 'environment' : 'user');
-    const closeSheet = () => {
-        setDetectedProduct(null);
-        setAiState('idle');
+    const stopCamera = () => {
+        if (videoRef.current && videoRef.current.srcObject) {
+            videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+        }
     };
 
+    // 3. Scan & Speak Logic
+    const handleScan = async () => {
+        if (!videoRef.current || scanning) return;
+        setScanning(true);
+        setTranscript("AI देख रहा है...");
+
+        const canvas = document.createElement('canvas');
+        canvas.width = videoRef.current.videoWidth;
+        canvas.height = videoRef.current.videoHeight;
+        canvas.getContext('2d').drawImage(videoRef.current, 0, 0);
+
+        canvas.toBlob(async (blob) => {
+            const formData = new FormData();
+            formData.append('image', blob);
+
+            try {
+                const res = await fetch('http://localhost:8080/api/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    setTranscript(data.name);
+                    speak(data.speak);
+                } else {
+                    setTranscript("दुबारा कोशिश करें।");
+                }
+            } catch (err) {
+                console.error(err);
+                setTranscript("Connection Error.");
+            } finally {
+                setScanning(false);
+            }
+        }, 'image/jpeg', 0.8);
+    };
+
+    // 4. Microsoft Voice Selector
+    const speak = (text) => {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        // Priority: Microsoft Hindi -> Google Hindi -> Any Hindi
+        const targetVoice = voices.find(v => v.name.includes("Microsoft") && v.name.includes("Hindi")) || 
+                          voices.find(v => v.name.includes("Microsoft") && v.name.includes("India")) ||
+                          voices.find(v => v.lang.includes("hi"));
+
+        if (targetVoice) {
+            utterance.voice = targetVoice;
+            // Rate 1.0 is normal, Microsoft voices sound good at 1.0 or 0.9
+            utterance.rate = 1.0; 
+        }
+
+        window.speechSynthesis.speak(utterance);
+    };
 
     return (
-        <div className="gemini-pro-container">
-            
-            {/* === Top Status Bar === */}
-            <div className="pro-top-bar">
-                <button className="icon-glass" onClick={() => navigate('/dashboard')}>
-                    <X size={24} />
-                </button>
-                <div className="live-status-badge">
-                    <Sparkles size={14} className="sparkle-anim" />
-                    <span>RCM Live Vision</span>
-                </div>
-                <div style={{width: 40}}></div> {/* Spacer for balance */}
-            </div>
-
-            {/* === Main Video Feed Area === */}
-            <div className="video-stage">
+        <div className="meeting-screen">
+            <div className="video-container">
+                {/* User Video */}
                 <video 
                     ref={videoRef} 
+                    autoPlay 
                     playsInline 
                     muted 
-                    className={`main-video-feed ${facingMode === 'user' ? 'mirrored' : ''} ${!isCameraOn ? 'hidden' : ''}`} 
+                    className="camera-view" 
                 />
                 
                 {!isCameraOn && (
-                    <div className="video-placeholder-state">
-                        <div className="placeholder-icon"><VideoOff size={40}/></div>
-                        <p>Camera Paused</p>
+                    <div className="camera-placeholder">
+                        <User size={64} color="#555" />
+                        <p>Starting Camera...</p>
                     </div>
                 )}
 
-                {/* Scanning Overlay Layer */}
-                {aiState === 'scanning' && (
-                    <div className="scan-overlay-layer">
-                        <div className="laser-scanner-bar"></div>
-                        <div className="scan-grid-pattern"></div>
-                    </div>
-                )}
-            </div>
-
-            {/* === The "Bottom Sheet" Product Result Panel === */}
-            {/* Slides up from bottom like Google Maps/Gemini */}
-            <div className={`pro-bottom-sheet ${aiState === 'presenting' && detectedProduct ? 'active' : ''}`}>
-                <div className="sheet-grab-handle"></div>
-                
-                {detectedProduct && (
-                    <div className="sheet-content-wrapper">
-                        <div className="sheet-header-row">
-                            <div className="sheet-title-block">
-                                <span className="category-tag">{detectedProduct.category}</span>
-                                <h2>{detectedProduct.name}</h2>
-                            </div>
-                             <button className="close-sheet-btn" onClick={closeSheet}>
-                                <ChevronDown size={24} />
-                            </button>
-                        </div>
-
-                        <div className="sheet-stats-row">
-                            <div className="stat-chip price">
-                                <Tag size={16} />
-                                <span>{detectedProduct.price}</span>
-                            </div>
-                            <div className="stat-chip pv">
-                                <ShoppingBag size={16} />
-                                <span>{detectedProduct.pv}</span>
-                            </div>
-                        </div>
-
-                        <div className="sheet-description-block">
-                            <Info size={18} className="info-icon" />
-                             <p>{detectedProduct.description}</p>
-                        </div>
-                         
-                         <div className="sheet-actions">
-                             <button className="sheet-btn primary">View Full Details</button>
-                         </div>
-                    </div>
-                )}
-            </div>
-
-            {/* === Floating Controls Layer === */}
-            <div className="floating-controls-layer">
-                
-                {/* 1. Floating Transcript Bubble */}
-                {aiState !== 'idle' && aiState !== 'presenting' && (
-                    <div className="floating-transcript-bubble">
-                        {aiState === 'analyzing' ? (
-                            <div className="thinking-dots"><span></span><span></span><span></span></div>
-                        ) : (
-                            <p>{transcript}</p>
-                        )}
-                    </div>
-                )}
-
-                {/* 2. The Main Control "Pill" Bar */}
-                <div className="control-pill-bar">
-                    <button className="ctrl-icon-btn" onClick={toggleCam}>
-                        {isCameraOn ? <Video size={20} /> : <VideoOff size={20} color="#ef4444"/>}
-                    </button>
-                    
-                    <button className="ctrl-icon-btn" onClick={switchCam}>
-                        <RefreshCw size={20} />
-                    </button>
-
-                    {/* THE HERO BUTTON - Changes based on state */}
-                    <button 
-                        className={`hero-trigger-btn ${aiState}`} 
-                        onClick={handleScanTrigger}
-                        disabled={aiState === 'scanning' || aiState === 'analyzing'}
-                    >
-                        <div className="hero-btn-content">
-                            {aiState === 'scanning' ? (
-                                <ScanLine size={28} className="pulsing" />
-                            ) : aiState === 'analyzing' ? (
-                                <div className="spinner-ring"></div>
-                            ) : (
-                                <Sparkles size={28} fill="currentColor" />
-                            )}
-                        </div>
-                    </button>
-
-                    <button className="ctrl-icon-btn" onClick={toggleMic}>
-                        {isMicOn ? <Mic size={20} /> : <MicOff size={20} color="#ef4444"/>}
-                    </button>
-
-                    <button className="ctrl-icon-btn exit-btn" onClick={() => navigate('/dashboard')}>
-                        <X size={20} />
-                    </button>
+                {/* Overlays */}
+                <div className="ai-badge">
+                    <Sparkles size={16} /> Microsoft AI
                 </div>
+
+                <div className="captions-box">
+                    <p>{transcript}</p>
+                </div>
+
+                {scanning && <div className="scan-laser"></div>}
+            </div>
+
+            <div className="bottom-dock">
+                <button className="icon-btn"><Mic size={24} /></button>
+                <button className="icon-btn" onClick={isCameraOn ? stopCamera : startCamera}>
+                    <Video size={24} />
+                </button>
+                
+                <button className={`scan-btn-main ${scanning ? 'pulse' : ''}`} onClick={handleScan}>
+                    <Camera size={32} />
+                </button>
+
+                <button className="icon-btn"><MoreVertical size={24} /></button>
+                <button className="icon-btn red"><PhoneOff size={24} /></button>
             </div>
         </div>
     );
