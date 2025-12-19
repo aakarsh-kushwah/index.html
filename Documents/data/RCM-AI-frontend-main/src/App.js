@@ -1,6 +1,8 @@
+// src/App.js
+
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'; // Ensure this path exists
 
 // --- Component Imports ---
 import UserProtectedRoute from './components/UserProtectedRoute'; 
@@ -11,14 +13,16 @@ const LoginPage = lazy(() => import('./components/login/LoginPage'));
 const RegisterPage = lazy(() => import('./components/RegisterPage/RegisterPage'));
 const PaymentPage = lazy(() => import('./components/PaymentPage/PaymentPage'));
 
-// Protected
+// --- Protected Components ---
 const UserDashboard = lazy(() => import('./components/UserDashboard/UserDashboard'));
 const Productsvideo = lazy(() => import('./components/Productsvideo/Productsvideo')); 
 const LeadersVideo = lazy(() => import('./components/LeadersVideo/LeadersVideo')); 
-const ChatWindow = lazy(() => import('./components/chatbot/ChatWindow'));
 const DailyReport = lazy(() => import('./components/DailyReport/DailyReport'));
 
-// ✅ NEW: AI Video Meeting (Import)
+// ✅ Updated Chat Path (Ensure your file is in src/components/ChatWindow.js or update this path)
+const ChatWindow = lazy(() => import('./components/chatbot/ChatWindow')); 
+
+// ✅ NEW: AI Video Meeting
 const AIVideoMeeting = lazy(() => import('./components/AIVideoMeeting/AIVideoMeeting')); 
 
 function App() {
@@ -32,13 +36,10 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/payment-setup" element={<PaymentPage />} />
 
-                {/* ✅ UPDATE: Maine ise 'UserProtectedRoute' se bahar nikal diya hai.
-                   Ab aap bina login kiye direct is path par ja sakte hain.
-                */}
+                {/* ✅ PUBLIC ACCESS: AI Video Meeting (No Login Required) */}
                 <Route path="/ai-video-meeting" element={<AIVideoMeeting />} />
 
-
-                {/* --- USER PROTECTED ROUTES (Baki sab secure rahenge) --- */}
+                {/* --- USER PROTECTED ROUTES --- */}
                 <Route 
                     path="/dashboard" 
                     element={
@@ -84,7 +85,7 @@ function App() {
                     } 
                 />
 
-                {/* FALLBACK ROUTE */}
+                {/* FALLBACK ROUTE: Redirect unknown paths to Home */}
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
         </Suspense>
